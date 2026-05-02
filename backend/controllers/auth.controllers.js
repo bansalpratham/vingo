@@ -39,12 +39,14 @@ try {
     })
 
     const token = await genToken(user._id);
-   res.cookie("token", token, {
-    secure: true,
-    sameSite: "none",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    httpOnly: true
-})
+   const isProd = process.env.NODE_ENV === "production";
+
+    res.cookie("token", token, {
+  secure: isProd,
+  sameSite: isProd ? "none" : "lax",
+  httpOnly: true,
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
 
     return res.status(201).json(user)
 
@@ -74,12 +76,14 @@ try {
     }
 
     const token = await genToken(user._id);
+   const isProd = process.env.NODE_ENV === "production";
+
     res.cookie("token", token, {
-    secure: true,
-    sameSite: "none",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    httpOnly: true
-})
+  secure: isProd,
+  sameSite: isProd ? "none" : "lax",
+  httpOnly: true,
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
 
     return res.status(200).json(user)
 
@@ -187,12 +191,14 @@ export const googleAuth = async(req,res) =>{
             })
         }
         const token = await genToken(user._id);
+        const isProd = process.env.NODE_ENV === "production";
+
     res.cookie("token", token, {
-    secure: true,
-    sameSite: "none",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    httpOnly: true
-})
+  secure: isProd,
+  sameSite: isProd ? "none" : "lax",
+  httpOnly: true,
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
 
       return res.status(200).json(user)
 
