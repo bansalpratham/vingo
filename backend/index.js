@@ -18,13 +18,13 @@ import { socketHandler } from './socket.js';
 const app = express();
 const server = http.createServer(app)
 
-const io = new Server(server,{
-    cors:{
-        origin: "http://localhost:5173",
-    credentials: true
+const io = new Server(server, {
+    cors: {
+        origin: "*",
+        credentials: true
     },
-    methods:['POST','GET']
-})
+    methods: ['POST', 'GET']
+});
 
 app.set("io",io)
 
@@ -32,9 +32,10 @@ app.set("io",io)
 const port = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     credentials: true
 }))
+
 app.use(express.json())
 app.use(cookieParser())
 
