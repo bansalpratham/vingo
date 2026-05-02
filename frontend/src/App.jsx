@@ -32,7 +32,7 @@ function App() {
   useGetShopByCity()
   useGetItemsByCity()
   useGetMyOrders()
-  useLocationUpdater()
+  useUpdateLocation()
   const {userData} = useSelector(state=>state.user)
   const dispatch = useDispatch()
   useEffect(() => {
