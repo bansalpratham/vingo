@@ -18,7 +18,7 @@ import CheckOut from './pages/CheckOut'
 import OrderPlaced from './pages/OrderPlaced'
 import MyOrders from './pages/MyOrders'
 import useGetMyOrders from './hooks/useGetMyOrders'
-import useUpdateLocation from './hooks/useUpdateLocation.jsx'
+import useUpdateLocation from './hooks/useLocationUpdater'
 import TrackOrderPage from './pages/TrackOrderPage'
 import Shop from './pages/Shop'
 import { io } from 'socket.io-client'
@@ -32,7 +32,7 @@ function App() {
   useGetShopByCity()
   useGetItemsByCity()
   useGetMyOrders()
-  useUpdateLocation()
+  useLocationUpdater()
   const {userData} = useSelector(state=>state.user)
   const dispatch = useDispatch()
   useEffect(() => {
